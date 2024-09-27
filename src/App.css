@@ -1,0 +1,18 @@
+.form{
+    position: relative;
+    width: 50%;
+    left: 30%;
+    top: 10px;
+}
+/* .bill{
+    position: relative;
+    width: 30%;
+    left:10%;
+} */
+
+.laptop{
+    width: 50%;
+    margin-left: 200px;
+    margin-right: 200px;
+    /* align-items: center; */
+}
