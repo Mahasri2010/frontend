@@ -63,10 +63,6 @@ const Navbar = ({setValidUser}) => {
                 <NavLink className="nav-link" to={'/stock/'}> Stock  </NavLink>
               </li>
 
-              
-           
-              
-              
               <li className="nav-item">
                 <NavLink className="nav-link" to={'/'}></NavLink>
                 <button className='btn btn-secondary' onClick={Logout}>LogOut</button>
