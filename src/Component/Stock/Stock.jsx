@@ -62,7 +62,7 @@ const Stock = () => {
         <h1 className='text-center'>Stock Lists</h1>
       </div>
 
-      <div>
+      <div className='table-responsive'>
         <table className='table'>
           <thead>
             <tr>

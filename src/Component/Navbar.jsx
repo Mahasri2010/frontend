@@ -39,21 +39,13 @@ const Navbar = ({setValidUser}) => {
                 <NavLink className="nav-link" to={'/laptop/'}> Laptop </NavLink>
               </li>
 
-
               <li className="nav-item">
                 <NavLink className="nav-link" to={'/list'}>BillList</NavLink>
               </li>
-
-
-              <li className="nav-item">
-                <NavLink className="nav-link" to={'/pay/'}> Payment </NavLink>
-              </li>
-
-
+              
               <li className="nav-item">
                 <NavLink className="nav-link" to={'/customer/list'}> Customer  </NavLink>
               </li>
-
 
               <li className="nav-item">
                 <NavLink className="nav-link" to={'/cato'}> Category</NavLink>
@@ -62,6 +54,7 @@ const Navbar = ({setValidUser}) => {
               <li className="nav-item">
                 <NavLink className="nav-link" to={'/stock/'}> Stock  </NavLink>
               </li>
+             
 
               <li className="nav-item">
                 <NavLink className="nav-link" to={'/'}></NavLink>

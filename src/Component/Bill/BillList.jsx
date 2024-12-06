@@ -6,8 +6,8 @@ import { useNavigate } from 'react-router-dom'
 const BillList = () => {
 
     const nav = useNavigate()
-    const[billdata,setBilldata]=useState([])
-    const[select,setSelect] = useState(0)
+    const [billdata, setBilldata] = useState([])
+    const [select, setSelect] = useState(0)
 
     const [customer, setCustomer] = useState([])
     // const[dealers,setDealers]=('')
@@ -16,7 +16,7 @@ const BillList = () => {
 
         axios.get('http://127.0.0.1:4000/bill/all/')
             .then(response => {
-                console.log(response.data,"bill")
+                console.log(response.data, "bill")
                 setBilldata(response.data)
             })
             .catch(error => console.log(error));
@@ -24,44 +24,45 @@ const BillList = () => {
 
     useEffect(() => {
         axios.get('http://127.0.0.1:4000/customer/all/')
-            .then(response => { console.log(response.data,"customer")
+            .then(response => {
+                console.log(response.data, "customer")
                 setCustomer(response.data)
             })
             .catch(error => console.log(error))
     }, [])
 
-    const result =billdata.length > 0 ?  billdata.map((bill,index)=>{
+    const result = billdata.length > 0 ? billdata.map((bill, index) => {
 
-        let cust = customer.find(c=>c._id === bill.bill_data.dealers)
+        let cust = customer.find(c => c._id === bill.bill_data.dealers)
 
-       return(
-        <tr key={bill.bill_data._id}>
-            <td>{index+1}</td>
-            <td>{bill.bill_data.bill_number}</td>
-            <td>{bill.bill_data.bill_date}</td>
-            <td>{cust?cust.customer_name:"-"}</td>
-            <td>{bill.bill_data.bill_amount}</td>
-            <td>
-                <button className='btn btn-info' onClick={()=>nav(`/view/${bill.bill_data._id}`)} >View</button>
-            </td>
-            <td>
-                <button className='btn btn-warning' onClick={()=>nav(`/bill/update/${bill.bill_data._id}`)}>Update</button>
-            </td>
-            <td>
-                <button className='btn btn-danger' data-bs-toggle="modal" data-bs-target="#staticBackdrop" onClick={()=>setSelect(bill.bill_data)}>Delete</button>
-            </td>
+        return (
+            <tr key={bill.bill_data._id}>
+                <td>{index + 1}</td>
+                <td>{bill.bill_data.bill_number}</td>
+                <td>{bill.bill_data.bill_date}</td>
+                <td>{cust ? cust.customer_name : "-"}</td>
+                <td>{bill.bill_data.bill_amount}</td>
+                <td>
+                    <button className='btn btn-info' onClick={() => nav(`/view/${bill.bill_data._id}`)} >View</button>
+                </td>
+                <td>
+                    <button className='btn btn-warning' onClick={() => nav(`/bill/update/${bill.bill_data._id}`)}>Update</button>
+                </td>
+                <td>
+                    <button className='btn btn-danger' data-bs-toggle="modal" data-bs-target="#staticBackdrop" onClick={() => setSelect(bill.bill_data)}>Delete</button>
+                </td>
 
-        </tr>
-       )
+            </tr>
+        )
     }) : <tr>
         <td colSpan={16}>No data found</td>
     </tr>
-           
+
 
 
     const DeleteHandler = () => {
 
-        
+
         axios.delete(`http://127.0.0.1:4000/bill/${select._id}/`)
             .then(response => {
                 console.log(response.data);
@@ -75,36 +76,41 @@ const BillList = () => {
 
 
 
-  return (
+    return (
 
-    <div>
-    
+        <div>
 
-        <div className='container'>
+
+            <div className='container'>
                 <h1 className='text-center'>Bill Details</h1>
                 <button className='container-fluids btn btn-primary float-end' onClick={() => nav('/bill')}>+Add Bill</button>
+                <br />
+                <br />
 
-        </div>
+            </div>
 
-        <table className='table'>
-            <thead>
-                <tr>
-                    <th>S.No</th>
-                    <th>Bill No</th>
-                    <th>Bill Date</th>
-                    <th>Dealer's Name</th>
-                    <th>Total Amount</th>
-                    <th>View</th>
-                    <th>Update</th>
-                    <th> Delete </th>
-                  
-                </tr>
-                </thead>
-                <tbody>
-                    {result}
-                </tbody>
+            <div className='table-responsive'>
+                <table className='table'>
+                    <thead>
+                        <tr>
+                            <th>S.No</th>
+                            <th>Bill No</th>
+                            <th>Bill Date</th>
+                            <th>Dealer's Name</th>
+                            <th>Total Amount</th>
+                            <th>View</th>
+                            <th>Update</th>
+                            <th> Delete </th>
 
-            </table>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {result}
+                    </tbody>
+
+                </table>
+            </div>
+
             <div className="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div className="modal-dialog">
                     <div className="modal-content">
@@ -113,7 +119,7 @@ const BillList = () => {
                             <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div className="modal-body">
-                             <p>Are you sure you want to delete {select.bill_number} ?</p>
+                            <p>Are you sure you want to delete {select.bill_number} ?</p>
                         </div>
                         <div className="modal-footer">
                             <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
@@ -121,11 +127,11 @@ const BillList = () => {
                         </div>
                     </div>
                 </div>
-            </div> 
+            </div>
 
 
-    </div>
-  )
+        </div>
+    )
 }
 
 export default BillList

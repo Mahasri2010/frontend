@@ -1,10 +1,8 @@
-import React,{useState,useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 
 const CustomerList = () => {
-
-
 
     const nav = useNavigate()
     const [select, setSelect] = useState(0)
@@ -57,28 +55,32 @@ const CustomerList = () => {
 
     return (
         <div>
-            <div>
+            <div className='container'>
                 <h1 className='text-center'>Customers Lists</h1>
                 <button className='container-fluids btn btn-primary float-end' onClick={() => nav('/customer/')}> + new customer</button>
-
+                <br />
+                <br />
             </div>
-            <table className='table'>
-                <thead>
-                    <tr>
-                        <th>S.No</th>
-                        <th>Company Name</th>
-                        <th>Customer Name</th>
-                        <th>Phone No</th>
-                        <th>Email</th>
-                        <th>Address</th>
-                        <th>Update</th>
-                        <th>Delete</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {result}
-                </tbody>
-            </table>
+
+            <div className='table-responsive'>
+                <table className='table'>
+                    <thead>
+                        <tr>
+                            <th>S.No</th>
+                            <th>Company Name</th>
+                            <th>Customer Name</th>
+                            <th>Phone No</th>
+                            <th>Email</th>
+                            <th>Address</th>
+                            <th>Update</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {result}
+                    </tbody>
+                </table>
+            </div>
 
             <div className="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div className="modal-dialog">

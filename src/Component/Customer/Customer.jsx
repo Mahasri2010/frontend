@@ -38,7 +38,7 @@ const Customer = () => {
         <div>
             <div>
                 <h1 className='text-center'>Customer Details</h1>
-                <button className='container-fluids btn btn-secondary float-end' onClick={()=>nav('/customer/list/')}>Back</button>
+                <button className='container-fluids btn btn-secondary float-end' onClick={() => nav('/customer/list/')}>Back</button>
 
                 <form className='form' >
 

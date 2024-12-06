@@ -52,7 +52,7 @@ const CustomerUpdate = () => {
         <div>
             <div>
                 <h1 className='text-center'> Customer Update</h1>
-                <button className='container-fluids btn btn-secondary float-end' onClick={() => nav('/customer/')}> Back </button> <br />
+                <button className='container-fluids btn btn-secondary float-end' onClick={() => nav('/customer/list/')}> Back </button> <br />
             </div>
 
 

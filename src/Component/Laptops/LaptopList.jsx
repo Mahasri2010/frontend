@@ -16,23 +16,23 @@ const LaptopList = () => {
 
     const [laptop, setLaptop] = useState([])
     const [lapcategory, setLapcategory] = useState([])
-    const[stock,setStock]=useState([])
+    const [stock, setStock] = useState([])
 
     useEffect(() => {
 
         // console.log(headers, "headers")
 
-    
+
         axios.get('http://127.0.0.1:4000/lapdatas/all/')
             .then(response => {
-                console.log(response.data,"laptop")
+                console.log(response.data, "laptop")
                 setLaptop(response.data)
             })
             .catch(error => console.log(error));
 
-            axios.get('http://127.0.0.1:4000/category/all/')
+        axios.get('http://127.0.0.1:4000/category/all/')
             .then(response => {
-                console.log(response.data,"category")
+                console.log(response.data, "category")
                 setLapcategory(response.data)
             })
             .catch(error => console.log(error));
@@ -44,7 +44,7 @@ const LaptopList = () => {
 
         axios.get('http://127.0.0.1:4000/stock/all/')
             .then(response => {
-                console.log(response.data,"stock")
+                console.log(response.data, "stock")
                 setStock(response.data)
             })
             .catch(error => console.log(error));
@@ -85,24 +85,23 @@ const LaptopList = () => {
             })
             .catch(error => console.log(error));
 
-            
-            let result =[]
 
-            if(stock.length>0)
-            {
-               result = stock.find(st =>st.laptop === select._id)
-                   
-               console.log(result,"stock delete")
-               
-            }
+        let result = []
 
-            
-            axios.delete(`http://127.0.0.1:4000/stock/${result._id}/`)
+        if (stock.length > 0) {
+            result = stock.find(st => st.laptop === select._id)
+
+            console.log(result, "stock delete")
+
+        }
+
+
+        axios.delete(`http://127.0.0.1:4000/stock/${result._id}/`)
             .then(response => {
 
                 console.log(response.data)
 
-             navigate('/laptop/')
+                nav('/laptop/')
 
             })
             .catch(error => console.log(error));
@@ -111,33 +110,36 @@ const LaptopList = () => {
     return (
 
         <div>
-        
+
             <div className='container'>
                 <h1 className='text-center'>Laptop Lists</h1>
                 <button className='container-fluids btn btn-primary float-end' onClick={() => nav('/laptop/add/')}>+Add new laptop</button>
-
+                <br />
+                <br />
             </div>
 
-            <table className='table'>
-                <thead>
-                    <tr>
-                        <th>S.No</th>
-                        <th>Brand Name</th>
-                        <th>Category</th>
-                        <th>Model NO</th>
-                        <th>Price</th>
-                        <th>Os</th>
-                        <th>Update</th>
-                        <th> Delete </th>
+            <div className='table-responsive'>
+                <table className='table'>
+                    <thead>
+                        <tr>
+                            <th>S.No</th>
+                            <th>Brand Name</th>
+                            <th>Category</th>
+                            <th>Model NO</th>
+                            <th>Price</th>
+                            <th>Os</th>
+                            <th>Update</th>
+                            <th> Delete </th>
 
 
-                    </tr>
-                </thead>
-                <tbody>
-                    {result}
-                </tbody>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {result}
+                    </tbody>
 
-            </table>
+                </table>
+            </div>
             <div className="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div className="modal-dialog">
                     <div className="modal-content">

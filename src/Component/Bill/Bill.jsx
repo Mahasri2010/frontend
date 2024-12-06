@@ -5,7 +5,7 @@ import axios from 'axios'
 
 const BillAdd = () => {
 
-    const nav = useNavigate()
+    const navigate = useNavigate()
 
     const [bill_number, setBillNumber] = useState('')
     const [bill_date, setBillDate] = useState('')
@@ -148,10 +148,20 @@ const BillAdd = () => {
     })
     console.log(dealer)
 
+    const DeleteLaptops = (event, index) => {
 
+        const laptop_list_duplicate = [...childbill]
 
+        if (laptop_list_duplicate[index].existing === true) {
+            laptop_list_duplicate[index].delete = true
+            laptop_list_duplicate[index].update = false
+        }
+        else {
+            laptop_list_duplicate.splice(index, 1)
+        }
+        setChildbill(laptop_list_duplicate)
 
-
+    }
 
 
     const result = laptop_list.length > 0 && laptop_list.map((lap, index) => {
@@ -192,7 +202,7 @@ const BillAdd = () => {
         axios.post('http://127.0.0.1:4000/bill/', bill)
             .then(response => {
                 console.log(response.data)
-                nav('/list')
+                navigate('/list')
             })
             .catch(error => console.log(error))
     }
@@ -234,8 +244,11 @@ const BillAdd = () => {
             <div className='container'>
 
                 <h1 className='text-center'>Create Bill</h1>
-
-                <button className='btn btn-secondary float-end' onClick={() => nav('/list')}>Back</button>
+                <div className='container-fluid'>
+                    <button className='btn btn-secondary float-end' onClick={() => navigate('/list')}>
+                        Back
+                    </button> <br /> <br />
+                </div>
 
             </div>
 

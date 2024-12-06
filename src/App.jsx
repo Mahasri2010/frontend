@@ -16,8 +16,7 @@ import CustomerList from './Component/Customer/CustomerList'
 import Stock from './Component/Stock/Stock'
 import StockAdd from './Component/Stock/StockAdd'
 import Login from './Component/Authentication/Login'
-import Payment from './Component/Payment/Payment'
-import PayList from './Component/Payment/PayList'
+
 
 
 const App = () => {
@@ -53,18 +52,13 @@ const App = () => {
         <Route path='/bill' element={<Bill />} />
         <Route path='bill/update/:id' element={<BillUpdate />} />
         <Route path='/view/:id' element={<BillView />} />
-        <Route path='/pay/' element={<PayList />} />
-        <Route path='/paid/:id' element={<Payment />} />
+       
         
      
 
 
 
 
-        
-        {/* <Route path='/student' element={<StudentList />} />
-        <Route path='/add' element={<StudentAdd />} />
-        <Route path='/bill/update/:id' element={<StudentUpdate />} />  */}
       </Routes>
 
     </div>

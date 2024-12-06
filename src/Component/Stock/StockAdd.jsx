@@ -38,23 +38,32 @@ const StockAdd = () => {
       })
 
       .catch(error => console.log(error))
-  },[])
+  }, [])
 
 
   return (
     <div>
 
-      <div className='container-fluids'>
+      <div className='container'>
         <h1 className='text-center'>StockAdd</h1>
+        <br />
         <button className='container-fluids btn btn-secondary float-end' onClick={() => navigate('/stock/')}>  Back </button>
+        <br />
+
       </div>
 
-      <form style={{ width: '50%', position: 'relative', left: '30%' }}>
+      <form className='row justify-content-center'>
+        <div className='col-12 col-md-6'>
+          <div className='mb-3'>
+            <label htmlFor='stock' className='form-label'>Stock :</label>
+            <input type="number" value={stock} onChange={event => setStock(event.target.value)} /> &nbsp;
+          </div>
 
-        <label>stock : &nbsp;</label>
-        <input type="number" value={stock} onChange={event => setStock(event.target.value)} /> &nbsp;
+          <input type="submit" className='btn btn-info w-50' onClick={event => Submit(event)} />
 
-        <input type="submit" className='btn btn-info' onClick={event => Submit(event)} />
+        </div>
+
+
 
       </form>
 
